@@ -15,17 +15,13 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
  * `cdk synth`       emits the synthesized CloudFormation template
 
 
-## user data dev
+## certbot commands
+
+Need to figure out how best to run this on startup. Thinking systemd or bashrc.
+May convert this whole thing to a container instead of ec2
 
 ```
 
-apt-get update
-apt-get -y install software-properties-common
-add-apt-repository -y ppa:certbot/certbot
-apt-get update
-apt-get -y install certbot
-apt-get -y install python3-certbot-dns-route53
-mkdir -p /mnt/efs/fs1/letsencrypt/{log,config,work}
 certbot certonly -d chrislyth.io -d *.chrislyth.io --dns-route53 \
     --logs-dir /mnt/efs/fs1/letsencrypt/log/ \
     --config-dir /mnt/efs/fs1/letsencrypt/config/ \
